@@ -7,6 +7,11 @@ app.get('/', (req, res) => {
   res.send(`Count: ${count}`);
 });
 
+app.get('/reset', (req, res) => {
+  count = 0;
+  res.send(`Counter has been reset`);
+});
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
