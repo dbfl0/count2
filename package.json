@@ -7,8 +7,10 @@
     "express": "^4.17.1"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "mocha test/**/*.js && curl https://api.checklyhq.com/checks/432099/result -X POST -H 'Authorization: Bearer $CHECKLY_API_KEY'"
   },
   "author": "Your Name",
   "license": "MIT"
 }
+
