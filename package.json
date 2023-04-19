@@ -4,11 +4,12 @@
   "description": "An API that shows a count of a number starting at 1 and increases each time the API is hit",
   "main": "index.js",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mocha": "^9.1.3"   
   },
   "scripts": {
     "start": "node index.js",
-    "test": "mocha test/**/*.js && curl https://api.checklyhq.com/checks/432099/result -X POST -H 'Authorization: Bearer $CHECKLY_API_KEY'"
+    "test": "mocha test/**/*.js && curl https://api.checklyhq.com/checks/d46bbc35-834a-48e6-8686-015983c27d15/result -X POST -H 'Authorization: Bearer $CHECKLY_API_KEY'"
   },
   "author": "Your Name",
   "license": "MIT"
