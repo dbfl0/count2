@@ -24,16 +24,15 @@ jobs:
 
       - name: Run Checkly tests
         run: npm test && curl https://api.checklyhq.com/checks/d46bbc35-834a-48e6-8686-015983c27d15/result -X POST -H 'Authorization: Bearer ${{ secrets.CHECKLY_API_KEY }}'
+
       - name: Deploy to release branch
         if: success()
         env:
-          GIT_COMMITTER_NAME: GitHub Actions
-          GIT_COMMITTER_EMAIL: actions@github.com
-          GIT_AUTHOR_NAME: GitHub Actions
-          GIT_AUTHOR_EMAIL: actions@github.com
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
-          git config --global user.name "${GIT_AUTHOR_NAME}"
-          git config --global user.email "${GIT_AUTHOR_EMAIL}"
+          docker build -t my-registry/my-node-app:latest -f dockerfile .
+          docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
           git checkout -b release
           docker push my-registry/my-node-app:latest
           git add .
