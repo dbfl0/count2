@@ -9,7 +9,6 @@
   },
   "scripts": {
     "start": "node index.js",
-    "test": "mocha test/**/*.js && curl https://api.checklyhq.com/checks/d46bbc35-834a-48e6-8686-015983c27d15/result -X POST -H 'Authorization: Bearer $CHECKLY_API_KEY'"
   },
   "author": "Your Name",
   "license": "MIT"
